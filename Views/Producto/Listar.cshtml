@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    List<Sistema.Models.ProductoModel> productos = ViewBag.productos;
+}
+
+<div class="card">
+    <div class="card-header">Productos</div>
+    <div class="card-body">
+        <a asp-action="Guardar" asp-controller="Producto" class="btn btn-primary">Agregar</a>
+        <hr />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Proveedor</th>
+                    <th>Fecha registro</th>
+                    <th>Opción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var producto in productos)
+                {
+                    <tr>
+                        <td>@producto.Nombre</td>
+                        <td>@producto.Descripcion</td>
+                        <td>@producto.Precio</td>
+                        <td>@producto.Proveedor.Nombre</td>
+                        <td>@producto.Fecha_registro</td>
+                        <td>
+                            <a asp-action="Editar" asp-controller="Producto" asp-route-IdProducto="@producto.Id" class="btn btn-info" role="button">Editar</a>
+                            <a asp-action="Borrar" asp-controller="Producto" asp-route-IdProducto="@producto.Id" class="btn btn-danger" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

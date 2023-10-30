@@ -1,0 +1,19 @@
+﻿@model ProveedorModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">Borrar proveedor</div>
+    <div class="card-body">
+        <form asp-action="Borrar" asp-controller="Proveedor" method="post">
+            <input asp-for="Id" type="hidden" class="form-control">
+            <div class="alert alert-danger" role="alert">
+                Desea borrar el proveedor @Html.DisplayTextFor(m => m.Nombre) ?
+            </div>
+            <button type="submit" class="btn btn-warning">Borrar</button>
+            <a asp-action="Listar" asp-controller="Proveedor" class="btn btn-info">Volver</a>
+        </form>
+    </div>
+</div>

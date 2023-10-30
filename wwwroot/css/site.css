@@ -1,0 +1,38 @@
+.mini-espacio {
+    margin-top: 1em;
+}
+
+.espacio {
+    margin-top: 2em;
+}
+
+.doble-espacio {
+    margin-top: 3em;
+}
+
+.espacio-icono {
+    margin-right: 5px;
+}
+
+.ingreso {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 5%;
+}
+
+.contenedor {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    line-height: 60px;
+    color: white;
+}
+
+.danger {
+    background-color: red !important;
+}

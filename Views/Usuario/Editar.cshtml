@@ -1,0 +1,31 @@
+﻿@model UsuarioModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<Sistema.Models.TipoUsuarioModel> tipos_usuarios = ViewBag.tipos_usuarios;
+}
+
+<div class="card">
+    <div class="card-header">Editar usuario</div>
+    <div class="card-body">
+        <form asp-action="Editar" asp-controller="Usuario" method="post">
+            <input asp-for="Id" type="hidden" class="form-control">
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input asp-for="Nombre" type="text" class="form-control" readonly>
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tipo de usuario</label>
+                <select asp-for="Id_tipo"
+                        class="form-control"
+                        asp-items="@(new SelectList(tipos_usuarios, "Id", "Nombre"))">
+                    <option disabled selected>--- Seleccione un tipo ---</option>
+                </select>
+                <span asp-validation-for="Id_tipo" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-action="Listar" asp-controller="Usuario" class="btn btn-info">Volver</a>
+        </form>
+    </div>
+</div>

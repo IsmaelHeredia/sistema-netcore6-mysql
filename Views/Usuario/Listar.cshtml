@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    List<Sistema.Models.UsuarioModel> usuarios = ViewBag.usuarios;
+}
+
+<div class="card">
+    <div class="card-header">Usuarios</div>
+    <div class="card-body">
+        <a asp-action="Guardar" asp-controller="Usuario" class="btn btn-primary">Agregar</a>
+        <hr />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Fecha registro</th>
+                    <th>Opción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var usuario in usuarios)
+                {
+                    <tr>
+                        <td>@usuario.Nombre</td>
+                        <td>@usuario.TipoUsuario.Nombre</td>
+                        <td>@usuario.Fecha_registro</td>
+                        <td>
+                            <a asp-action="Editar" asp-controller="Usuario" asp-route-IdUsuario="@usuario.Id" class="btn btn-info" role="button">Editar</a>
+                            <a asp-action="Borrar" asp-controller="Usuario" asp-route-IdUsuario="@usuario.Id" class="btn btn-danger" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

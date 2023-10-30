@@ -1,0 +1,40 @@
+﻿@model ProductoModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<Sistema.Models.ProveedorModel> proveedores = ViewBag.proveedores;
+}
+
+<div class="card">
+    <div class="card-header">Crear producto</div>
+    <div class="card-body">
+        <form asp-action="Guardar" asp-controller="Producto" method="post">
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input asp-for="Nombre" type="text" class="form-control">
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <input asp-for="Descripcion" type="text" class="form-control">
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Precio</label>
+                <input asp-for="Precio" type="text" class="form-control">
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Proveedor</label>
+                <select asp-for="Id_proveedor"
+                        class="form-control"
+                        asp-items="@(new SelectList(proveedores, "Id", "Nombre"))">
+                    <option disabled selected>--- Seleccione un proveedor ---</option>
+                </select>
+                <span asp-validation-for="Id_proveedor" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-action="Listar" asp-controller="Producto" class="btn btn-info">Volver</a>
+        </form>
+    </div>
+</div>
